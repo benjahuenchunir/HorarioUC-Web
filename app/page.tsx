@@ -1,4 +1,19 @@
+import { createClient } from '../utils/supabase/client'
+import { useEffect } from 'react';
+
+const supabase = createClient()
+
 export default async function Index() {
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, error } = await supabase
+        .from('courses')
+        .select('*')
+      console.log(data, error)
+    }
+    fetch()
+  })
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
